@@ -4,6 +4,7 @@ const upload = require('../middleware/uploadMiddleware');
 exports.createRequest = async (req, res) => {
   try {
     const { area, summary } = req.body;
+    console.log(req.body)
     const videos = req.files['videos'] ? req.files['videos'].map(file => file.path) : [];
     const photos = req.files['photos'] ? req.files['photos'].map(file => file.path) : [];
 
