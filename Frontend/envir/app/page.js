@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Navbar } from "./Components/Navbar";
 import { ChevronRight, Globe, Users } from 'lucide-react';
 

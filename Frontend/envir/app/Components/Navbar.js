@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export function Navbar(){
     return(
         <>
@@ -8,7 +10,7 @@ export function Navbar(){
             <div className="flex space-x-12 absolute list-none right-[20%]">
                 <li className="text-[20px] font-bold text-slate-500 hover:cursor-pointer hover:border-b-2 border-green-700">Home</li>
                 <li className="text-[20px] font-bold text-slate-500 hover:cursor-pointer hover:border-b-2 border-green-700">About</li>
-                <li className="text-[20px] font-bold text-slate-500 hover:cursor-pointer hover:border-b-2 border-green-700">DashBoard</li>
+               <Link href={"/UserPage"}><li className="text-[20px] font-bold text-slate-500 hover:cursor-pointer hover:border-b-2 border-green-700">DashBoard</li></Link> 
                 <li className="text-[20px] font-bold text-slate-500 hover:cursor-pointer hover:border-b-2 border-green-700">Donate Us</li>
                 <li className="text-[20px] font-bold text-slate-500 hover:cursor-pointer hover:border-b-2 border-green-700">Signup</li>
             </div>
