@@ -4,7 +4,9 @@ import newEnv from "../UserPage/newEnv.jpg";
 import userImage from "../UserPage/imagee.avif";
 import { Mail, Users, Book } from "lucide-react";
 
+
 export default function UserData() {
+ 
   return (
     <>
       <div className="w-full min-h-screen bg-gradient-to-br from-black via-gray-900 to-green-900">

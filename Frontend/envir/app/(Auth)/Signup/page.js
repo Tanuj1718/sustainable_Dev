@@ -5,16 +5,45 @@ import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode';
 import Image from "next/image";
 import googleSymbol from "../Signup/googleimg.png";
+import { useState } from "react";
+import axios from 'axios';
+
 
 export default function UserData() {
+
+
+    const [email , setEmail] = useState("")
+    const [userName , setUserName] = useState("")
+  
+    const singupUser = async()=>{
+      await axios.post("http://localhost:3000/userSignup" , {
+        username : userName,
+        email : email
+      })
+      .then((response)=>{
+        localStorage.setItem("Authorization" , "Bearer " + response.token)
+        alert(response.data.msg)
+        console.log(response.data.msg)
+      })
+
+      .catch(error=>{
+        console.log("Something went wrong " + error)
+        alert("Something went wrong " + error)
+      })
+    }
+  
+  
   const handleLoginSuccess = (credentialResponse) => {
     const decoded = jwt_decode(credentialResponse.credential);
     console.log('Decoded User Info:', decoded);
 
     const { name, email, picture } = decoded;
+    setEmail(email)
+    setUserName(name)
     console.log('Name:', name);
     console.log('Email:', email);
     console.log('Picture:', picture);
+    singupUser()
   };
 
   return (
