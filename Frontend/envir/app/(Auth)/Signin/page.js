@@ -22,7 +22,7 @@ export default function UserData() {
     
 
     const singupUser = async()=>{
-      await axios.post("http://localhost:3000/userSignin" , {
+      await axios.post("http://localhost:3000/v1/userSignin" , {
         username : userName,
         email : email
       })

@@ -20,7 +20,7 @@ export default function UserData() {
     const router = useRouter();
   
     const singupUser = async()=>{
-      await axios.post("http://localhost:3000/userSignup" , {
+      await axios.post("http://localhost:3000/v1/userSignup" , {
         username : userName,
         email : email
       })
