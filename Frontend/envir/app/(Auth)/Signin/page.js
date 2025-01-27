@@ -17,10 +17,12 @@ export default function UserData() {
     const [email , setEmail] = useState("")
     const [userName , setUserName] = useState("")
 
+
     const router = useRouter();
-  
+    
+
     const singupUser = async()=>{
-      await axios.post("http://localhost:3000/userSignup" , {
+      await axios.post("http://localhost:3000/userSignin" , {
         username : userName,
         email : email
       })
@@ -75,7 +77,7 @@ export default function UserData() {
                   }}
                 />
               </GoogleOAuthProvider>
-             <Link href={"/Signin"}><h1 className='text-center'>Already Have a account? Login</h1></Link> 
+              <Link href={"/Signup"}><h1 className='text-center'>Don't Have a account? Signup</h1></Link>
             </div>
            </div>
            </div>
