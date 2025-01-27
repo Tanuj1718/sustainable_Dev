@@ -13,7 +13,7 @@
 // const connectDB = async () => {
 //     try {
 //         // Connecting to MongoDB
-//         const connectionInstance = await mongoose.connect(`mongodb+srv://tanuj:0835tanuj@cluster0.vmscwdb.mongodb.net/Sustain`, {
+//         const connectionInstance = await mongoose.connect(`MONGO_DB_URL/Sustain`, {
 //             useNewUrlParser: true,
 //             useUnifiedTopology: true,
 //         });
