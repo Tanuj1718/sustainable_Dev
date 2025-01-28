@@ -65,7 +65,7 @@ export default function UserData() {
               Welcome Chat!!
             </h1>
             
-            <div className='w-full flex justify-center flex-col space-y-3 items-center'>
+            <div className='w-full flex justify-center'>
               <GoogleOAuthProvider clientId="819539479154-ddf4ovgv77fg8quni4hq5qf79oscthja.apps.googleusercontent.com">
                 <GoogleLogin
                   onSuccess={handleLoginSuccess}

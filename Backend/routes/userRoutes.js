@@ -5,12 +5,14 @@ const { authMiddleware } = require('../middleware/authMiddleware');
 const upload = require('../middleware/uploadMiddleware');
 
 router.post('/request', 
-  authMiddleware, 
+    authMiddleware, 
   upload.fields([
     { name: 'videos', maxCount: 5 },
     { name: 'photos', maxCount: 10 }
   ]), 
   userController.createRequest
 );
+
+router.get('/data', authMiddleware, userController.getData);
 
 module.exports = router;

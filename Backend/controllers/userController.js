@@ -4,6 +4,7 @@ const upload = require('../middleware/uploadMiddleware');
 exports.createRequest = async (req, res) => {
   try {
     const { area, summary } = req.body;
+    console.log(req.body)
     const videos = req.files['videos'] ? req.files['videos'].map(file => file.path) : [];
     const photos = req.files['photos'] ? req.files['photos'].map(file => file.path) : [];
 
@@ -23,3 +24,13 @@ exports.createRequest = async (req, res) => {
     res.status(400).send(error);
   }
 };
+
+exports.getData = async (req, res ) =>{
+  try {
+    const requests = await Request.find().populate('user', 'username email');
+    res.send(requests)
+  } catch (error) {
+    console.log(error)
+    res.status(400).send(error)
+  }
+}

@@ -4,8 +4,8 @@ const adminController = require('../controllers/adminController');
 const { authMiddleware, adminMiddleware } = require('../middleware/authMiddleware');
 
 router.get('/requests', 
-  authMiddleware, 
-  adminMiddleware, 
+    authMiddleware, 
+    adminMiddleware,
   adminController.getAllRequests
 );
 
