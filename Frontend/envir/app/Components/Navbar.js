@@ -14,6 +14,7 @@ export function Navbar(){
                 <li className="text-[20px] font-bold text-slate-500 hover:cursor-pointer hover:border-b-2 border-green-700">Donate Us</li>
                 <Link href={"/Entry"}><li className="text-[20px] font-bold text-slate-500 hover:cursor-pointer hover:border-b-2 border-green-700">Upload Work</li></Link>
                 <Link href={"/Signup"}><li className="text-[20px] font-bold text-slate-500 hover:cursor-pointer hover:border-b-2 border-green-700">Signup</li></Link>
+                <Link href={"/UserData"}><li className="text-[20px] font-bold text-slate-500 hover:cursor-pointer hover:border-b-2 border-green-700">My Work</li></Link>
             </div>
         </div>
         </>
