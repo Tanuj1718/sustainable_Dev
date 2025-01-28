@@ -13,4 +13,6 @@ router.post('/request',
   userController.createRequest
 );
 
+router.get('/data', authMiddleware, userController.getData);
+
 module.exports = router;

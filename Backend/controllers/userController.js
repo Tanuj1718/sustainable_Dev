@@ -24,3 +24,13 @@ exports.createRequest = async (req, res) => {
     res.status(400).send(error);
   }
 };
+
+exports.getData = async (req, res ) =>{
+  try {
+    const requests = await Request.find().populate('user', 'username email');
+    res.send(requests)
+  } catch (error) {
+    console.log(error)
+    res.status(400).send(error)
+  }
+}
