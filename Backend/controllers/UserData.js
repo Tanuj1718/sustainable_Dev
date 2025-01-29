@@ -1,28 +1,32 @@
 const express = require("express");
 const router = express.Router();
 const zod = require("zod")
-const userSchema = require("../models/User")
+const User = require("../models/User")
 const jwt = require("jsonwebtoken")
 
 
 const userChecker = zod.object({
     username : zod.string(),
-    email : zod.string().email(),
+    email : zod.string(),
 })
 
 router.post("/userSignup" , async(req,res)=>{
     const {success} = userChecker.safeParse(req.body)
     if(!success) return res.json({msg : "The data you entered do no follow our requirement"})
-    let findUser = await userSchema.find({email:req.body.email})
+    let findUser = await User.findOne({email:req.body.email})
+    console.log(req.body.email)
+    console.log(findUser)
     if(findUser) return res.json({msg : "User already exist please enter new email"})
     try{
       let {username , email} = req.body
-      let userData = await userSchema.create({
+      let userData = await User.create({
         username : username,
         email : email,
       })
 
-      let userEmailJWT = jwt.sign({userData} , JWT_SECRET)
+      let submitjwtemail = userData.email
+
+      let userEmailJWT = jwt.sign({submitjwtemail} , "06062003")
 
       return res.json({
         token : userEmailJWT,
@@ -40,10 +44,12 @@ router.post("/userSignup" , async(req,res)=>{
 router.post("/userSignin" , async(req,res)=>{
     const {success} = userChecker.safeParse(req.body)
     if(!success) return res.json({msg : "The data you entered do no follow our requirement"})
-    let findUser = await userSchema.find({email:req.body.email})
+    let findUser = await User.findOne({email:req.body.email})
+    console.log(req.body.email)
     if(!findUser) return res.json({msg : "User do not exist please enter new email"})
     try{
-        let userEmailJWT = jwt.sign({findUser} , JWT_SECRET)
+        let jwtemail = findUser.email
+        let userEmailJWT = jwt.sign({jwtemail} , "06062003")
         return res.json({
             token : userEmailJWT,
             msg : "Welcome back to the site sir"
