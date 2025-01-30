@@ -5,11 +5,19 @@ const adminRoutes = require('./routes/adminRoutes');
 const userAuth = require("./controllers/UserData")
 const cors = require("cors")
 
+require("dotenv").config();
+
+const databaseURL = process.env.MONGODB_URL
+
+console.log("MongoDB url is :" + databaseURL)
+
 const app = express();
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 5000
 
 // Connect to MongoDB
 connectDB();
+
+
 
 // app.use(cors({
 //   origin : "https://sustainable-dev.vercel.app/UserPage",

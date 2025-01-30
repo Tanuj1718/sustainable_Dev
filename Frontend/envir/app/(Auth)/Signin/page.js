@@ -21,13 +21,13 @@ export default function UserData() {
     const router = useRouter();
     
 
-    const singupUser = async()=>{
-      await axios.post("http://localhost:3000/v1/userSignin" , {
-        username : userName,
+    const singupUser = async(name,email)=>{
+      await axios.post("http://localhost:5000/v1/userSignin" , {
+        username : name,
         email : email
       })
       .then((response)=>{
-        localStorage.setItem("Authorization" , "Bearer " + response.token)
+        localStorage.setItem("Authorization" , "Bearer " + response.data.token)
         alert(response.data.msg)
         console.log(response.data.msg)
         setTimeout(()=>router.push("/") , 2000)
@@ -40,7 +40,7 @@ export default function UserData() {
     }
   
   
-  const handleLoginSuccess = (credentialResponse) => {
+  const handleLoginSuccess = async(credentialResponse) => {
     const decoded = jwt_decode(credentialResponse.credential);
     console.log('Decoded User Info:', decoded);
 
@@ -50,7 +50,7 @@ export default function UserData() {
     console.log('Name:', name);
     console.log('Email:', email);
     console.log('Picture:', picture);
-    singupUser()
+    singupUser(name,email)
   };
 
   return (
