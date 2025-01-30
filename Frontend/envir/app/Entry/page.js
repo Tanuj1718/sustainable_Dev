@@ -12,27 +12,33 @@ export default function UserEntry() {
 
     const handleImageUpload = (event) => {
         setImages([...images, ...event.target.files]);
+        alert("image is added")
     };
 
     const handleVideoUpload = (event) => {
-        if (event.target.files.length > 0) {
+        if(event.target.files.length > 0) {
             setVideo(event.target.files[0]);
+            alert("video is added")
         }
     };
 
     const handleSubmit = async () => {
         const formData = new FormData();
         images.forEach((image) => formData.append("images", image));
-        if (video) formData.append("video", video);
+        if(video){
+            formData.append("video", video);
+        }
 
-        try {
+        try{
             await axios.post("http://localhost:5000/api/users/request", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
             }
         );
-        } catch (error) {
+        console.log("data is sended to backend")
+        } 
+        catch(error){
             console.error("Error uploading files:", error);
         }
     };
